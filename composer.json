@@ -1,0 +1,8 @@
+{
+    "name": "blackjack/sistem_informasi_keuangan",
+    "description": "Finance information system prototype for Blackjack Personal Vaporizer",
+    "require": {
+        "vlucas/phpdotenv": "^2.2"
+    },
+    "license": "MIT"
+}
