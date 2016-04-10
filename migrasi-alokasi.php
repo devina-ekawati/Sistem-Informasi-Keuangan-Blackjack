@@ -1,3 +1,28 @@
+<?php 
+require_once 'Model.php';
+
+if($_SERVER['REQUEST_METHOD'] == 'POST')
+{
+  $req = $_POST;
+  $trans = new Database\Model('t_finance_transaksi');
+  $id = $trans->insert([
+    "keterangan" => "Migrasi alokasi dari ".$req['alokasi1']." ke ".$req['alokasi2'],
+    "id_jenis_transaksi" => 3
+  ]);
+
+  $trans_alokasi = new Database\Model('t_finance_transaksi_alokasi');
+  $trans_alokasi->insert([
+    "id_alokasi" => $req["alokasi1"],
+    "id_finance_transaksi" => $id,
+    "jumlah" => $req["jumlah"],
+  ]);
+  $trans_alokasi->insert([
+    "id_alokasi" => $req["alokasi2"],
+    "id_finance_transaksi" => $id,
+    "jumlah" => -$req["jumlah"],
+  ]);
+}
+?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -111,31 +136,29 @@
                   <h3 class="box-title">Form Migrasi Alokasi</h3>
                 </div><!-- /.box-header -->
                 <!-- form start -->
-                <form role="form">
+                <form role="form" method="post" action="">
                   <div class="box-body">
                     <div class="form-group">
                       <label for="namaBarang">Alokasi Sumber</label>
-                      <select class="form-control">
-                        <option>option 1</option>
-                        <option>option 2</option>
-                        <option>option 3</option>
-                        <option>option 4</option>
-                        <option>option 5</option>
+                      <select class="form-control" name="alokasi1">
+                        <option value="1">Unallocated</option>
+                        <option value="2">Modal</option>
+                        <option value="3">Profit</option>
+                        <option value="4">Ketahanan Dana</option>
                       </select>
                     </div>
                     <div class="form-group">
                       <label for="namaBarang">Alokasi Tujuan</label>
-                      <select class="form-control">
-                        <option>option 1</option>
-                        <option>option 2</option>
-                        <option>option 3</option>
-                        <option>option 4</option>
-                        <option>option 5</option>
+                      <select class="form-control" name="alokasi2">
+                        <option value="1">Unallocated</option>
+                        <option value="2">Modal</option>
+                        <option value="3">Profit</option>
+                        <option value="4">Ketahanan Dana</option>
                       </select>
                     </div>
                     <div class="form-group">
                       <label for="jumlahBarang">Jumlah</label>
-                      <input required type="number" class="form-control" id="jumlah" placeholder="Masukkan jumlah alokasi">
+                      <input required type="number" class="form-control" id="jumlah" name="jumlah" placeholder="Masukkan jumlah alokasi">
                     </div>
                   </div><!-- /.box-body -->
 

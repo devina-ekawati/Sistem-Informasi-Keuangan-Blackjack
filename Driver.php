@@ -1,8 +1,8 @@
 <?php
 
-require_once __DIR__.'/vendor/autoload.php';
-
 namespace Database;
+
+require_once __DIR__.'\vendor\autoload.php';
 
 /**
 * Db driver
@@ -13,7 +13,7 @@ class Driver
   
   function __construct()
   {
-    $dotenv = new Dotenv\Dotenv(__DIR__);
+    $dotenv = new \Dotenv\Dotenv(__DIR__);
     $dotenv->load();
 
     $host     = getenv('DB_HOST');
@@ -31,6 +31,14 @@ class Driver
   function getConnection()
   {
     return $this->db_conn;
+  }
+
+  function exec($query)
+  {
+    $res = mysqli_query($this->db_conn, $query);
+    if ($res === true)
+      return mysqli_insert_id($this->db_conn);
+    else return $res;
   }
 
   function __destruct()
