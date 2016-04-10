@@ -6,8 +6,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
   $req = $_POST;
   $trans = new Database\Model('t_finance_transaksi');
   $id = $trans->insert([
-    "keterangan" => "Migrasi alokasi dari ".$req['alokasi1']." ke ".$req['alokasi2'],
-    "id_jenis_transaksi" => 3
+    "keterangan" => "Migrasi alokasi dari ".$req["alokasi1"]." ke ".$req["alokasi2"],
+    "id_jenis_transaksi" => 3,
   ]);
 
   $trans_alokasi = new Database\Model('t_finance_transaksi_alokasi');

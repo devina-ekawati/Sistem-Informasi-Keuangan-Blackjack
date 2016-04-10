@@ -1,3 +1,28 @@
+<?php 
+require_once 'Model.php';
+
+if($_SERVER['REQUEST_METHOD'] == 'POST')
+{
+  $req = $_POST;
+  $trans = new Database\Model('t_finance_transaksi');
+  $id = $trans->insert([
+    "keterangan" => "Migrasi kas dari ".$req["kas1"]." ke ".$req["kas2"],
+    "id_jenis_transaksi" => 3,
+  ]);
+
+  $trans_kas = new Database\Model('t_finance_transaksi_kas');
+  $trans_kas->insert([
+    "id_kas" => $req["kas1"],
+    "id_finance_transaksi" => $id,
+    "jumlah" => $req["jumlah"],
+  ]);
+  $trans_kas->insert([
+    "id_kas" => $req["kas2"],
+    "id_finance_transaksi" => $id,
+    "jumlah" => -$req["jumlah"],
+  ]);
+}
+?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -111,31 +136,33 @@
                   <h3 class="box-title">Form Migrasi Kas</h3>
                 </div><!-- /.box-header -->
                 <!-- form start -->
-                <form role="form">
+                <form role="form" method="post" action="">
                   <div class="box-body">
                     <div class="form-group">
                       <label for="namaBarang">Kas Sumber</label>
-                      <select class="form-control">
-                        <option>option 1</option>
-                        <option>option 2</option>
-                        <option>option 3</option>
-                        <option>option 4</option>
-                        <option>option 5</option>
+                      <select class="form-control" name="kas1">
+                        <option value="1">Kas kecil</option>
+                        <option value="2">Kas besar</option>
+                        <option value="3">Rekening BCA</option>
+                        <option value="4">Rekening Mandiri</option>
+                        <option value="5">Tokopedia</option>
+                        <option value="6">Bukalapak</option>
                       </select>
                     </div>
                     <div class="form-group">
                       <label for="namaBarang">Kas Tujuan</label>
-                      <select class="form-control">
-                        <option>option 1</option>
-                        <option>option 2</option>
-                        <option>option 3</option>
-                        <option>option 4</option>
-                        <option>option 5</option>
+                      <select class="form-control" name="kas2">
+                        <option value="1">Kas kecil</option>
+                        <option value="2">Kas besar</option>
+                        <option value="3">Rekening BCA</option>
+                        <option value="4">Rekening Mandiri</option>
+                        <option value="5">Tokopedia</option>
+                        <option value="6">Bukalapak</option>
                       </select>
                     </div>
                     <div class="form-group">
                       <label for="jumlahBarang">Jumlah</label>
-                      <input required type="number" class="form-control" id="jumlah" placeholder="Masukkan jumlah kas">
+                      <input required type="number" class="form-control" id="jumlah" name="jumlah" placeholder="Masukkan jumlah kas">
                     </div>
                   </div><!-- /.box-body -->
 
