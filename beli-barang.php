@@ -1,3 +1,10 @@
+<?php
+	//require_once 'Model.php';
+	
+
+
+?>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -111,15 +118,19 @@
                   <h3 class="box-title">Form Pembelian Barang</h3>
                 </div><!-- /.box-header -->
                 <!-- form start -->
-                <form role="form">
+                <form role="form" action="function/belibarang.php" id="belibarang" method="get" name="belibarang">
                   <div class="box-body">
                     <div class="form-group">
                       <label for="namaBarang">Nama Barang</label>
-                      <input required type="text" class="form-control" id="namaBarang" placeholder="Masukkan nama barang">
+                      <input required type="text" class="form-control" id="namaBarang" name="nama" placeholder="Masukkan nama barang">
                     </div>
                     <div class="form-group">
                       <label for="jumlahBarang">Jumlah Barang</label>
-                      <input required type="number" class="form-control" id="jumlahBarang" placeholder="Masukkan jumlah barang">
+                      <input required type="number" class="form-control" id="jumlahBarang" name="jumlah" placeholder="Masukkan jumlah barang">
+                    </div>
+					<div class="form-group">
+                      <label for="hargaBarang">Harga</label>
+                      <input required type="number" class="form-control" id="hargaBarang" name="harga" placeholder="Harga Total">
                     </div>
                   </div><!-- /.box-body -->
 
