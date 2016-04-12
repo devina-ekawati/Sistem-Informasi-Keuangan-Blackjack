@@ -7,7 +7,7 @@
 	$nama = $_GET["nama"];
 	$jumlah = (int)$_GET["jumlah"];
 	$harga = (int)$_GET["harga"];
-	$harga *= -1;
+	$harga_akhir = $harga * -1;
 	$kas = (int)$_GET["kas1"];
 	if ($kas > 2)
 		$alur = $kas + 1;
@@ -18,10 +18,10 @@
 	$rquery = mysqli_query($conn, $query);
 	$idfinance = mysqli_insert_id($conn);
 	
-	$query = "INSERT INTO t_finance_transaksi_kas VALUES (NULL, '".$kas."', '".$harga."', '".$idfinance."')";
+	$query = "INSERT INTO t_finance_transaksi_kas VALUES (NULL, '".$kas."', '".$harga_akhir."', '".$idfinance."')";
 	$rquery = mysqli_query($conn, $query);
 	
-	$query = "INSERT INTO t_finance_transaksi_alokasi VALUES (NULL, 2, '".$harga."', '".$idfinance."')";
+	$query = "INSERT INTO t_finance_transaksi_alokasi VALUES (NULL, 2, '".$harga_akhir."', '".$idfinance."')";
 	$rquery = mysqli_query($conn, $query);
 	
 	$query = "INSERT INTO t_belanja VALUES (NULL, '".$harga."', '". date("Y/m/d h:i:sa") ."', '".$alur."', '".$idfinance."')";

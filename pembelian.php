@@ -1,3 +1,6 @@
+<?php
+	require_once('function.php');
+?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -126,48 +129,14 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td>OR9842</td>
-                          <td>Call of Duty IV</td>
-                          <td><span class="info-box-number"><small>Rp </small>1,000,000</span></td>
-                          <td>8 April 2015</td>
-                        </tr>
-                        <tr>
-                          <td>OR1848</td>
-                          <td>Samsung Smart TV</td>
-                          <td><span class="info-box-number"><small>Rp </small>1,000,000</span></td>
-                          <td>8 April 2015</td>
-                        </tr>
-                        <tr>
-                          <td>OR7429</td>
-                          <td>iPhone 6 Plus</td>
-                          <td><span class="info-box-number"><small>Rp </small>1,000,000</span></td>
-                          <td>8 April 2015</td>
-                        </tr>
-                        <tr>
-                          <td>OR7429</td>
-                          <td>Samsung Smart TV</td>
-                          <td><span class="info-box-number"><small>Rp </small>1,000,000</span></td>
-                          <td>8 April 2015</td>
-                        </tr>
-                        <tr>
-                          <td>OR1848</td>
-                          <td>Samsung Smart TV</td>
-                          <td><span class="info-box-number"><small>Rp </small>1,000,000</span></td>
-                          <td>8 April 2015</td>
-                        </tr>
-                        <tr>
-                          <td>OR7429</td>
-                          <td>iPhone 6 Plus</td>
-                          <td><span class="info-box-number"><small>Rp </small>1,000,000</span></td>
-                          <td>8 April 2015</td>
-                        </tr>
-                        <tr>
-                          <td>OR9842</td>
-                          <td>Call of Duty IV</td>
-                          <td><span class="info-box-number"><small>Rp </small>1,000,000</span></td>
-                          <td>8 April 2015</td>
-                        </tr>
+					  <?php foreach (getBeli() as $data) { ?>
+					    <tr>
+							<td><?= $data['id'];?></td>
+							<td><?= $data['keterangan'];?></td>
+							<td><?= $data['harga'];?></td>
+							<td><?= $data['waktu'];?></td>
+						<?php } ?>
+                        
                       </tbody>
                     </table>
                   </div><!-- /.table-responsive -->
