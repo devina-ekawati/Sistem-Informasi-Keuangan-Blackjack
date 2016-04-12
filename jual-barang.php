@@ -121,10 +121,25 @@
                       <label for="jumlahBarang">Jumlah Barang</label>
                       <input required type="number" class="form-control" id="jumlahBarang" placeholder="Masukkan jumlah barang">
                     </div>
+                    <div class="form-group">
+                      <label for="namaBarang">Cara Pembayaran</label>
+                      <select class="form-control" name="kas1">
+                        <option value="1">Kas kecil</option>
+                        <option value="2">Kas besar</option>
+                        <option value="3">Rekening BCA</option>
+                        <option value="4">Rekening Mandiri</option>
+                        <option value="5">Tokopedia</option>
+                        <option value="6">Bukalapak</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="hargaBarang">Harga</label>
+                      <input required type="number" class="form-control" id="hargaBarang" name="harga" placeholder="Harga Total">
+                    </div>
                   </div><!-- /.box-body -->
 
                   <div class="box-footer">
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary">Tambah</button>
                   </div>
                 </form>
               </div><!-- /.box -->

@@ -167,7 +167,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
                   </div><!-- /.box-body -->
 
                   <div class="box-footer">
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary">Tambah</button>
                   </div>
                 </form>
               </div><!-- /.box -->
