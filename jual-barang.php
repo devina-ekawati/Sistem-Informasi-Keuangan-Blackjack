@@ -111,15 +111,15 @@
                   <h3 class="box-title">Form Penjualan Barang</h3>
                 </div><!-- /.box-header -->
                 <!-- form start -->
-                <form role="form">
+                <form role="form" action="function/jualbarang.php" id="jualbarang" method="get" name="jualbarang">
                   <div class="box-body">
                     <div class="form-group">
                       <label for="namaBarang">Nama Barang</label>
-                      <input required type="text" class="form-control" id="namaBarang" placeholder="Masukkan nama barang">
+                      <input required type="text" class="form-control" id="namaBarang" name="nama" placeholder="Masukkan nama barang">
                     </div>
                     <div class="form-group">
                       <label for="jumlahBarang">Jumlah Barang</label>
-                      <input required type="number" class="form-control" id="jumlahBarang" placeholder="Masukkan jumlah barang">
+                      <input required type="number" class="form-control" id="jumlahBarang" name="jumlah" placeholder="Masukkan jumlah barang">
                     </div>
                     <div class="form-group">
                       <label for="namaBarang">Cara Pembayaran</label>

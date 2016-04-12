@@ -8,18 +8,25 @@
 	$jumlah = (int)$_GET["jumlah"];
 	$harga = (int)$_GET["harga"];
 	$harga *= -1;
-	
-	$query = "INSERT INTO t_finance_transaksi VALUES (NULL, NULL, 2, '". date("Y/m/d h:i:sa") ."')";
+	$kas = (int)$_GET["kas1"];
+	if ($kas > 2)
+		$alur = $kas + 1;
+	else
+		$alur = $kas;
+		
+	$query = "INSERT INTO t_finance_transaksi VALUES (NULL, '".$nama."', 2, NULL)";
 	$rquery = mysqli_query($conn, $query);
-	$idfinance = $this->db->insert_id();
+	$idfinance = mysqli_insert_id($conn);
 	
-	$query = "INSERT INTO t_finance_transaksi_kas VALUES (NULL, 2, '".$harga."', '".$idfinance."')";
+	$query = "INSERT INTO t_finance_transaksi_kas VALUES (NULL, '".$kas."', '".$harga."', '".$idfinance."')";
 	$rquery = mysqli_query($conn, $query);
 	
 	$query = "INSERT INTO t_finance_transaksi_alokasi VALUES (NULL, 2, '".$harga."', '".$idfinance."')";
 	$rquery = mysqli_query($conn, $query);
 	
-	$query = "INSERT INTO t_belanja VALUES (NULL, '".$harga."', '". date("Y/m/d h:i:sa") ."', 2, '".$idfinance."')";
+	$query = "INSERT INTO t_belanja VALUES (NULL, '".$harga."', '". date("Y/m/d h:i:sa") ."', '".$alur."', '".$idfinance."')";
 	$rquery = mysqli_query($conn, $query);
-	
+
+	header("Location: ../beli-barang.php");
+	die();
 ?>

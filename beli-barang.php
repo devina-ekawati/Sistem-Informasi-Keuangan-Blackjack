@@ -130,8 +130,8 @@
                       <select class="form-control" name="kas1">
                         <option value="1">Kas kecil</option>
                         <option value="2">Kas besar</option>
-                        <option value="3">Rekening BCA</option>
-                        <option value="4">Rekening Mandiri</option>
+                        <option value="4">Rekening BCA</option>
+                        <option value="5">Rekening Mandiri</option>
                       </select>
                     </div>
 	                 <div class="form-group">
