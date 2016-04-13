@@ -46,17 +46,25 @@ class Model
     return $result;
   }
 
-  function select($fields, $conditions = null)
+  function select($fields = null, $conditions = null)
   {
     $this->query .= "select ";
 
-    $first = true;
-    foreach ($fields as $field) 
+    if ($fields)
     {
-      if (!$first) $this->query .= ",";
-      $this->query .= $field;
-      $first = false;
+      $first = true;
+      foreach ($fields as $field) 
+      {
+        if (!$first) $this->query .= ",";
+        $this->query .= $field;
+        $first = false;
+      }
     }
+    else
+    {
+      $this->query .= "*";
+    }
+
     $this->query .= " from ".$this->table;
 
     if ($conditions)
